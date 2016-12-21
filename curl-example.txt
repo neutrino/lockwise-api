@@ -1,1 +1,17 @@
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"body":"hello world!"}' http://localhost:5000/check
+
+
+request
+{
+  "from" : '',
+  "to" : '',
+  "subject" : '',
+  "body" : ''
+}
+
+response
+{
+  message: "The "
+  percentage: ""
+  status:
+}
