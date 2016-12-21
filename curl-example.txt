@@ -1,4 +1,4 @@
-curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"body":"hello world!"}' http://localhost:5000/check
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"body":"hello world!"}' http://35.156.175.139/check
 
 
 request

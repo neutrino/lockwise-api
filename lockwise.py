@@ -16,9 +16,16 @@ def check():
   try:
     data = request.get_json()
     app.logger.debug(data)
+    response = {
+      'percentage' : 75,
+      'status' : 'ok'
+    }
     return jsonify(data)
   except:
-    message = {'error': 'Sorry, something went wrong.'}
+    response = {
+      'message' : 'Sorry, something went wrong.',
+      'status' : 'error'
+    }
     return jsonify(message), 400
     # return jsonify()
 
