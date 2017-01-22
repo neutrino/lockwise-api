@@ -47,7 +47,7 @@ def check():
 
 
 def predict(input_text):
-  testString = input_text
+  testString = [input_text]
   modesSaved=joblib.load('processed/modes.sav')
   vectorizer = modesSaved[0]
   lsa = modesSaved[1]
@@ -70,7 +70,6 @@ def predict(input_text):
     return True
   else:
     return False
-
 
 if __name__ == '__main__':
   app.run(debug=True, host='0.0.0.0')

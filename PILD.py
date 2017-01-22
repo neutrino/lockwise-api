@@ -21,7 +21,6 @@ def PILD():
     X_test = Normalizer(copy=False).transform(X_test) # normalization
     Y_predict = classifier.predict(X_test)
 
-
     testMatrix = vectorizer.transform(testString) # string into tfidf matrix
     X_test = lsa.transform(testMatrix) # dimensionality reduction
     X_test = Normalizer(copy=False).transform(X_test) # normalization
