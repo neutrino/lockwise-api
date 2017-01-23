@@ -32,18 +32,38 @@ def check():
   try:
     data = request.get_json()
     app.logger.debug(data)
-    response = {
-      'percentage' : 75,
-      'status' : 'ok'
-    }
-    return jsonify(data)
+    # build_data
+    text_content = []
+    if 'subject' in data:
+      text_content.append("\nsubject\n")
+      text_content.append(data["subject"])
+    if 'body' in data:
+      text_content.append("body\n")
+      text_content.append(data["body"])
+    # convert to a string
+    input_text = ''.join(text_content)
+
+    response = { }
+
+    if input_text == "":
+      response["error"] =  "Invalid Data!"
+      return jsonify(data)
+
+    # process the data
+    result = predict(input_text)
+    if result:
+      response["message"] = "This may have some sensitive data."
+    else:
+      response["message"] = "It didn't detect any sensitive information here."
+    response["status"] = 'ok'
+    return jsonify(response)
+
   except:
     response = {
       'message' : 'Sorry, something went wrong.',
       'status' : 'error'
     }
     return jsonify(message), 400
-    # return jsonify()
 
 
 def predict(input_text):
